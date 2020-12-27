@@ -1,0 +1,235 @@
+﻿<Window x:Class="PatientManagementSystem.Staff.StaffHome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PatientManagementSystem.Staff"
+        mc:Ignorable="d"
+        Title="Staff Home" Height="720" Width="1280" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Background="#FFACD7B2" WindowStyle="None">
+    <Grid HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Height="720" Width="1280">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="101*"/>
+            <ColumnDefinition Width="27*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="61*"/>
+            <RowDefinition Height="46*"/>
+            <RowDefinition Height="613*"/>
+        </Grid.RowDefinitions>
+        <Canvas Background="#FFACD7B2" Margin="0,0,5,0">
+            <TextBlock Height="44" Canvas.Left="19" TextWrapping="Wrap" Text="Patient Management System" Canvas.Top="14" Width="376" FontSize="30" HorizontalAlignment="Left" Uid="PageTitle" Foreground="White" FontFamily="Yu Gothic UI Light"/>
+            <Image Height="50" Canvas.Left="1660" Width="50" Canvas.Top="-15" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        </Canvas>
+        <Canvas Grid.Column="1" Background="#FFACD7B2">
+            <TextBlock x:Name="Name" TextWrapping="Wrap" FontFamily="Yu Gothic UI Light" FontSize="22" Height="28" Width="149" Text="%name%" Canvas.Top="18" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
+            <Button Height="60" Canvas.Left="150" Width="60" BorderBrush="{x:Null}" Foreground="{x:Null}" Style="{DynamicResource RoundedButton}" Canvas.Top="1">
+                <Button.Background>
+                    <ImageBrush ImageSource="/PatientManagementSystem;component/Resources/userIcon_Transparent.png"/>
+                </Button.Background>
+            </Button>
+            <Button Content="" Height="60" Canvas.Left="210" Width="60" BorderBrush="{x:Null}" Foreground="{x:Null}" Style="{DynamicResource RoundedButton}" Canvas.Top="1" Click="Shutdown_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="ShutdownIcon.png"/>
+                </Button.Background>
+            </Button>
+        </Canvas>
+        <TabControl Grid.ColumnSpan="2" Grid.RowSpan="2" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" TabStripPlacement="Left" Grid.Row="1" Background="White" BorderBrush="{x:Null}" Foreground="{x:Null}">
+            <TabItem BorderBrush="{x:Null}" Background="#FFACD7B2" Foreground="{x:Null}" Style="{DynamicResource ButtonIcon}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                <TabItem.Header>
+                    <Image Width="80" Height="80" OpacityMask="{x:Null}" Source="homeIcon.png"/>
+                </TabItem.Header>
+                <Canvas Margin="-2,-5.4,0,0">
+                    <Rectangle Fill="#F0B0D0B2" Height="122" VerticalAlignment="Top" Width="1194" Canvas.Top="-3"/>
+                    <Image HorizontalAlignment="Left" Height="118" VerticalAlignment="Top" Width="152" Source="/PatientManagementSystem;component/LoginManagement/PMSLoginGraphic.png" Canvas.Top="-3"/>
+                    <TextBlock Height="122" TextWrapping="Wrap" Width="580" FontSize="100" Foreground="#FFFBFBFB" FontFamily="Yu Gothic Light UI" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="152" Canvas.Top="-3"><Run Text="Dashboard"/><InlineUIContainer>
+                            
+                        </InlineUIContainer></TextBlock>
+                    <TextBlock x:Name="dateTimeDashboard" TextWrapping="Wrap" FontFamily="Yu Gothic UI Light" FontSize="30" Height="37" Width="195" Text="Time: %time%" Canvas.Top="81" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Canvas.Left="989"/>
+                </Canvas>
+            </TabItem>
+            <TabItem BorderBrush="{x:Null}" Background="#FFACD7B2" Foreground="{x:Null}" Style="{DynamicResource ButtonIcon}">
+                <Canvas>
+                    <Rectangle Fill="#F0B0D0B2" Height="122" VerticalAlignment="Top" Canvas.Left="-2" Width="1194" Canvas.Top="-9"/>
+                    <Image HorizontalAlignment="Left" Height="118" VerticalAlignment="Top" Width="152" Source="/PatientManagementSystem;component/LoginManagement/PMSLoginGraphic.png" Canvas.Left="-2" Canvas.Top="-9"/>
+                    <TextBlock Height="122" TextWrapping="Wrap" Width="580" FontSize="100" Foreground="#FFFBFBFB" FontFamily="Yu Gothic Light UI" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="150" Canvas.Top="-9" Text="Patients"/>
+                    <GroupBox Height="548" Width="213" Canvas.Left="979" Canvas.Top="106" Background="#FFB5D3B7" BorderBrush="{x:Null}" BorderThickness="0">
+                        <Button x:Name="AddPatient_Copy" Content="" Click="Button_Click" Margin="10,442,141,50" Foreground="White" BorderBrush="{x:Null}" Style="{DynamicResource MenuRoundedButton}" FontSize="30" Padding="0" FontStretch="Condensed" Width="50" Height="50">
+                            <Button.Background>
+                                <ImageBrush ImageSource="PlusIcon_Transparent.png"/>
+                            </Button.Background>
+                        </Button>
+                    </GroupBox>
+                    <TextBox x:Name="id" Height="27" Canvas.Left="989" TextWrapping="Wrap" Text="Patient ID" Canvas.Top="135" Width="194" FontSize="15" FontFamily="Yu Gothic Light UI" SelectionBrush="#FF6CB081" Foreground="Black" BorderBrush="#FFACD7B2" Padding="2" PreviewKeyDown="id_PreviewKeyDown" LostFocus="id_LostFocus" Style="{DynamicResource AnimatedSearchBox}">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="12"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <TextBox x:Name="fname" Height="27" Canvas.Left="989" TextWrapping="Wrap" Text="Firstname" Canvas.Top="167" Width="194" FontSize="15" FontFamily="Yu Gothic Light UI" SelectionBrush="#FF6CB081" Foreground="Black" BorderBrush="#FFACD7B2" Padding="2" PreviewKeyDown="fname_PreviewKeyDown" LostFocus="fname_LostFocus" Style="{DynamicResource AnimatedSearchBox}">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="12"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <TextBox x:Name="lname" Height="27" Canvas.Left="989" TextWrapping="Wrap" Text="Lastname" Canvas.Top="199" Width="194" FontSize="15" FontFamily="Yu Gothic Light UI" SelectionBrush="#FF6CB081" Foreground="Black" BorderBrush="#FFACD7B2" Padding="2" PreviewKeyDown="lname_PreviewKeyDown" LostFocus="lname_LostFocus" Style="{DynamicResource AnimatedSearchBox}">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="12"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <Button Content="Search" Height="26" Canvas.Left="1034" Canvas.Top="327" Width="144" Foreground="White" Background="#FF79BB81" Style="{DynamicResource RoundedButton}" BorderBrush="{x:Null}" Click="SearchPatient_Click">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="12"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <TextBox x:Name="dob" Height="27" Canvas.Left="989" TextWrapping="Wrap" Text="Date of Birth" Canvas.Top="231" Width="194" FontSize="15" FontFamily="Yu Gothic Light UI" SelectionBrush="#FF6CB081" Foreground="Black" BorderBrush="#FFACD7B2" Padding="2" PreviewKeyDown="dob_PreviewKeyDown" LostFocus="dob_LostFocus" Style="{DynamicResource AnimatedSearchBox}">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="12"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <TextBox x:Name="postcode" Height="27" Canvas.Left="989" TextWrapping="Wrap" Text="Postcode" Canvas.Top="263" Width="194" FontSize="15" FontFamily="Yu Gothic Light UI" SelectionBrush="#FF6CB081" Foreground="Black" BorderBrush="#FFACD7B2" Padding="2" PreviewKeyDown="postcode_PreviewKeyDown" LostFocus="postcode_LostFocus" Style="{DynamicResource AnimatedSearchBox}">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="12"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <TextBox x:Name="email" Height="27" Canvas.Left="989" TextWrapping="Wrap" Text="Email Address" Canvas.Top="295" Width="193" FontSize="15" FontFamily="Yu Gothic Light UI" SelectionBrush="#FF6CB081" Foreground="Black" BorderBrush="#FFACD7B2" Padding="2" PreviewKeyDown="email_PreviewKeyDown" LostFocus="email_LostFocus" Style="{DynamicResource AnimatedSearchBox}">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="12"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <TextBlock x:Name="dateTimePatientPage" TextWrapping="Wrap" FontFamily="Yu Gothic UI Light" FontSize="30" Height="37" Width="195" Text="Time: %time%" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Canvas.Left="987" Canvas.Top="79.5" Uid="dateTimePatientPage"/>
+                    <ListView x:Name="patientList_Search" Height="143" Width="650" Foreground="#FF0C0C0C" Canvas.Top="511" SelectionChanged="patientSearch_Select" BorderBrush="{x:Null}" BorderThickness="0">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding id}" Header="Patient ID:"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding fname}" Header="Firstname:"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding lname}" Header="Lastname:"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding dob}" Header="Date of Birth:"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding house}" Header="House:"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding adr1}" Header="Address Line 1:"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding postcode}" Header="Postcode:"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding phone}" Header="Phone Number:"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding email}" Header="Email Address:"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <GroupBox Height="155" Width="276" Canvas.Left="650" Canvas.Top="511" Background="#FFB5D3B7" BorderBrush="{x:Null}" BorderThickness="0"/>
+                </Canvas>
+                <TabItem.Header>
+                    <Image Width="80" Height="80" OpacityMask="{x:Null}" Source="PatientIcon.png"/>
+                </TabItem.Header>
+            </TabItem>
+            <TabItem Style="{DynamicResource ButtonIcon}" Background="#FFACD7B2" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                <TabItem.Header>
+                    <Image Width="80" Height="80" OpacityMask="{x:Null}" Source="Calendar.png" MouseLeftButtonDown="refreshDayAppointments"/>
+                </TabItem.Header>
+                <Canvas Margin="-2,-5.4,0,0">
+                    <Rectangle Fill="#F0B0D0B2" Height="122" VerticalAlignment="Top" Width="1194" Canvas.Top="-3"/>
+                    <Image HorizontalAlignment="Left" Height="118" VerticalAlignment="Top" Width="152" Source="/PatientManagementSystem;component/LoginManagement/PMSLoginGraphic.png" Canvas.Top="-3"/>
+                    <TextBlock Height="122" TextWrapping="Wrap" Width="606" FontSize="100" Foreground="#FFFBFBFB" FontFamily="Yu Gothic Light UI" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="152" Canvas.Top="-3" Text="Appointments"/>
+                    <Grid Height="536" Width="1194" Canvas.Top="122" Background="White">
+                        <ListView x:Name="patientList_Appointment" Foreground="#FF0C0C0C" Margin="0,380,0,0" Background="{x:Null}" BorderBrush="{x:Null}" SelectionChanged="patientSearch_Select">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        Date
+                                    </GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        8:00 AM
+                                    </GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        8:30 AM
+                                    </GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        9:00 AM
+                                    </GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        9:30 AM
+                                    </GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        10:00 AM
+                                    </GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        10:30 AM
+                                    </GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        11:00 AM
+                                    </GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        11:30 AM
+                                    </GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        12:00 PM
+                                    </GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        12:30 PM
+                                    </GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        13:00 PM
+                                    </GridViewColumn>
+
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        13:30 PM
+                                    </GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        14:00 PM
+                                    </GridViewColumn>
+
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        14:30 PM
+                                    </GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        15:00 PM
+                                    </GridViewColumn>
+
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        15:30 PM
+                                    </GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        16:00 PM
+                                    </GridViewColumn>
+
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        16:30 PM
+                                    </GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        17:00 PM
+                                    </GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        17:30 PM
+                                    </GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        18:00 PM
+                                    </GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding id}">
+                                        18:30 PM
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <Calendar HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="{x:Null}" Margin="1016,225,0,0" BorderThickness="0" Height="159" Width="178" Background="{x:Null}"/>
+                        <Button x:Name="addAppointment" Content="Add Appointment" Click="addAppointment_Click" Margin="276,248,791,161"/>
+                        <Button x:Name="manageAppointment" Content="Manage Appointment" Click="manageAppointment_Click" Margin="145,248,923,161"/>
+                        <Button x:Name="deleteAppointment" Content="Delete Appointment" Click="deleteAppointment_Click" Margin="10,248,1054,161"/>
+                    </Grid>
+                </Canvas>
+            </TabItem>
+        </TabControl>
+
+
+
+
+
+    </Grid>
+</Window>
